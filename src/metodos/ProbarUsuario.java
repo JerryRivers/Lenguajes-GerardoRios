@@ -14,8 +14,11 @@ public class ProbarUsuario
     public static void main (String args [])
 	{
 		Usuario u1=new Usuario();
-		u1.setEdad(-19);    
-		System.out.println("Tu edad es "+u1.getEdad());
+		u1.setEdad(19);
+                
+                //Creamos un objeto de la clase lógica OperacionesUsuario
+                OperacionesUsuario op=new OperacionesUsuario();
+		System.out.println("Tu edad es "+op.calcularEdadEnDias(u1));
 	}
 }
 
