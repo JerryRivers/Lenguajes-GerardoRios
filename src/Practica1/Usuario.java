@@ -21,6 +21,9 @@ public class Usuario
     {
         return peso;
     }
+    /**
+     * @return the altura
+     */
     public double getAltura()
     {
         return altura;
@@ -31,13 +34,13 @@ public class Usuario
      */
     public void setPeso(double peso) 
     {
-        if(peso<0)
-	{
-            peso=0;
-            System.out.println("No debes meter edades menores a 0");
-	}
         this.peso = peso;
     }
-    
-    
+    /**
+     * @param altura the peso to set
+     */
+    public void setAltura(double altura) 
+    {
+        this.altura = altura;
+    }   
 }
