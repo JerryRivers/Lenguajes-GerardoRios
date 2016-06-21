@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Genericos;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 /**
  *
@@ -17,6 +16,7 @@ public class InterfazUsuario extends javax.swing.JFrame {
      */
     public InterfazUsuario() {
         initComponents();
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/breath_of_the_wild.jpg")));
     }
 
     /**
@@ -38,6 +38,7 @@ public class InterfazUsuario extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         Tmail = new javax.swing.JTextField();
+        image = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,6 +61,8 @@ public class InterfazUsuario extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("E-Mail:");
+
+        image.setText("jLabel5");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,7 +88,9 @@ public class InterfazUsuario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(Tname, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Tmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addComponent(image)
+                .addGap(109, 109, 109))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,11 +102,14 @@ public class InterfazUsuario extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(Tname, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Tage, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Tage, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                            .addComponent(image)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)))
-                .addGap(11, 11, 11)
+                        .addComponent(jLabel3)
+                        .addGap(22, 22, 22)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(Tmail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -120,7 +128,7 @@ public class InterfazUsuario extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 325, Short.MAX_VALUE)
+            .addGap(0, 349, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Buscar Usuario", jPanel2);
@@ -148,17 +156,24 @@ public class InterfazUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Creamos un objeto de tipo PersistenciaUsuario que es un ArrayList
         PersistenciaUsuario p=new PersistenciaUsuario();
        
         try 
         {
+            //1.-Creamos objeto de tipo Usuario y recogemos información de los TextField
             Usuario u=new Usuario(Tname.getText(),Integer.parseInt(Tage.getText()),Tmail.getText());
+            //2.- Guardamos haciendo uso del objeto 'p' en conjunto del metodo guardar
             p.guardar(u);
-            //p.guardar(new Usuario(Tname.getText(),Integer.parseInt(Tage.getText()),Tmail.getText()));
-            JOptionPane.showConfirmDialog(this,"Usuario Guardado Exitosamente");
+            //3.- Limpiamos TextFields
+            Tname.setText("");
+            Tage.setText("");
+            Tmail.setText("");
+            //4.- Mostramos mensaje de Exito al guardar Usuario
+            JOptionPane.showMessageDialog(this, "Usuario guardado Exitosamente");
         } catch (Exception ex) 
         {
-            JOptionPane.showConfirmDialog(this, ex.getMessage());
+            JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -201,6 +216,7 @@ public class InterfazUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField Tage;
     private javax.swing.JTextField Tmail;
     private javax.swing.JTextField Tname;
+    private javax.swing.JLabel image;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

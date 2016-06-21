@@ -5,8 +5,6 @@
  */
 package Genericos;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -16,12 +14,12 @@ public class ProbarGuardado
 {
     public static void main(String[] args) 
     {
-        Usuario u= new Usuario("Jerry", 22, "Jerry@live.com");
+        Usuario u= new Usuario("Yesica", 23, "Yesi@live.com");
          PersistenciaUsuario p=new PersistenciaUsuario();
         try 
         {
-            p.guardar(u);
-            System.out.println("Usuario Guardado");
+            p.buscarTodos();
+            System.out.println("Usuario Guardado: "+u);
         } catch (Exception ex) 
         {
            System.out.println(ex.getMessage());

@@ -27,15 +27,17 @@ public class ProbarUsuarios
         {
             System.out.println(ex.getMessage());
         }*/
+        
         //Vamos a Leer el ArrayList para ver su contenido
-        //1.- Creamos un onjeto de la clase PersistenciaUsuario
+        //1.- Creamos un objeto de la clase PersistenciaUsuario
         PersistenciaUsuario p=new PersistenciaUsuario();
         try 
         {
             ArrayList<Usuario> usuarios=p.buscarTodos();
             int tam=usuarios.size();
+            Usuario info=usuarios.get(8);
             System.out.println("Usuarios guardados: "+tam);
-            System.out.println("El usuario guardado es: "+usuarios.get(0).getNombre());
+            System.out.println("El usuario guardado es: "+info.getNombre()+","+info.getEdad()+","+info.getEmail());
         } catch (Exception ex) 
         {
             System.out.println(ex.getMessage());

@@ -24,7 +24,7 @@ public class PersistenciaUsuario
     {
         usuarios=new ArrayList<>();
     }
-    /*Primero generamos el metodo que nos guara un usuario*/
+    /*Primero generamos el metodo que nos guarda un usuario*/
     public void guardar(Usuario u) throws  Exception
    {
        //1.- Generar el archivo a guardar
