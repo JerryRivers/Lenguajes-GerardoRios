@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 /**
  *
@@ -233,26 +234,40 @@ public class InterfazUsuario extends javax.swing.JFrame {
             PersistenciaUsuario p=new PersistenciaUsuario();
             ArrayList<Usuario> usuarios = p.buscarTodos();//p.buscarTodos lanza Excepciones
             
-            int tama=usuarios.size();
-            JOptionPane.showMessageDialog(this, "Usuarios encontrados: "+tama);
+            DefaultTableModel tableRow = (DefaultTableModel)tablaUsuarios.getModel();
+            //int tama=usuarios.size();
+            int tama= p.buscarTodos().size();
+            //JOptionPane.showMessageDialog(this, "Usuarios encontrados: "+tama);
+            tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [tama][3],
+            new String [] {"Nombre", "Edad", "Email"})); 
             int fila=0;
-            int nfila;
+            //int upd;
             
-            //nfila=tablaUsuarios.getRowCount();
-            //JOptionPane.showMessageDialog(this, nfila);
-            
-            //tablaUsuarios.addRowSelectionInterval(nfila, tama);
-            
-            tablaUsuarios.getModel();
+            //upd= tama - tableRow.getRowCount();
+            //JOptionPane.showMessageDialog(this, upd);
+            //Object datos[]= {"","",""};
+            //Object datos[]= {tableRow.getRowCount()+2,"",""};
+            /*
+            if(tama > tableRow.getRowCount())
+            {
+                for(fila=0; fila<upd; fila++)
+                {
+                    tableRow.addRow(new Object[fila]); 
+                }
+            }
+            */
             
             for(Usuario u: usuarios)
-            {
+            {    
+                //Object datos[]= {u.getNombre(),u.getEdad(),u.getEmail()};
                 tablaUsuarios.setValueAt(u.getNombre(), fila, 0);
                 tablaUsuarios.setValueAt(u.getEdad(), fila, 1);
                 tablaUsuarios.setValueAt(u.getEmail(), fila, 2);
                 fila++;
+               // tableRow.addRow(new Object[fila]);
             }
-
+            
         }
         catch (Exception ex) 
         {
