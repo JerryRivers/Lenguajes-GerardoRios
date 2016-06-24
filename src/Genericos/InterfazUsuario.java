@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package Genericos;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 /**
  *
  * @author T-107
@@ -16,7 +20,7 @@ public class InterfazUsuario extends javax.swing.JFrame {
      */
     public InterfazUsuario() {
         initComponents();
-        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/breath_of_the_wild.jpg")));
+       // image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/breath_of_the_wild.jpg")));
     }
 
     /**
@@ -40,6 +44,9 @@ public class InterfazUsuario extends javax.swing.JFrame {
         Tmail = new javax.swing.JTextField();
         image = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        buscarTodos = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaUsuarios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,9 +95,9 @@ public class InterfazUsuario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(Tname, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(Tmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(image)
-                .addGap(109, 109, 109))
+                .addGap(53, 53, 53))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,15 +108,14 @@ public class InterfazUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(Tname, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Tage, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                            .addComponent(image)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(image)
+                            .addComponent(Tage, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(22, 22, 22)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(Tmail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -120,15 +126,58 @@ public class InterfazUsuario extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Guardar Usuario", jPanel1);
 
+        buscarTodos.setText("Buscar a Todos los Usuarios");
+        buscarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarTodosActionPerformed(evt);
+            }
+        });
+
+        tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Edad", "Mail"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tablaUsuarios);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 589, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(buscarTodos)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 349, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(buscarTodos)
+                .addGap(49, 49, 49)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Buscar Usuario", jPanel2);
@@ -177,6 +226,40 @@ public class InterfazUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void buscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarTodosActionPerformed
+        try 
+        {
+            //1.- Generamos un objeto de la clase persistencia Usuario
+            PersistenciaUsuario p=new PersistenciaUsuario();
+            ArrayList<Usuario> usuarios = p.buscarTodos();//p.buscarTodos lanza Excepciones
+            
+            int tama=usuarios.size();
+            JOptionPane.showMessageDialog(this, "Usuarios encontrados: "+tama);
+            int fila=0;
+            int nfila;
+            
+            //nfila=tablaUsuarios.getRowCount();
+            //JOptionPane.showMessageDialog(this, nfila);
+            
+            //tablaUsuarios.addRowSelectionInterval(nfila, tama);
+            
+            tablaUsuarios.getModel();
+            
+            for(Usuario u: usuarios)
+            {
+                tablaUsuarios.setValueAt(u.getNombre(), fila, 0);
+                tablaUsuarios.setValueAt(u.getEdad(), fila, 1);
+                tablaUsuarios.setValueAt(u.getEmail(), fila, 2);
+                fila++;
+            }
+
+        }
+        catch (Exception ex) 
+        {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_buscarTodosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -216,6 +299,7 @@ public class InterfazUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField Tage;
     private javax.swing.JTextField Tmail;
     private javax.swing.JTextField Tname;
+    private javax.swing.JButton buscarTodos;
     private javax.swing.JLabel image;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -224,6 +308,8 @@ public class InterfazUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable tablaUsuarios;
     // End of variables declaration//GEN-END:variables
 }
