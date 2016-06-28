@@ -16,7 +16,7 @@ public class Animal
     String peso;
     boolean carnivoro;
     
-    //constructor por defecto
+ 
     public Animal(String value)
     {
         nombre=value;
@@ -42,7 +42,7 @@ public class Animal
         carnivoro=value3;
         peso=value4;
     }
-    
+       //constructor por defecto
     public Animal()
     {
         nombre="Leon";
