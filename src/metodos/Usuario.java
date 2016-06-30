@@ -22,16 +22,16 @@ public class Usuario
     }
 
     /**
-     * @param edad the edad to set
+     * @param edad1 the edad to set
      */
-    public void setEdad(int edad) 
+    public void setEdad(int edad1) 
     {
-        if(edad<0)
+        if(edad1<0)
 	{
-            edad=0;
+            edad1=0;
             System.out.println("No debes meter edades menores a 0");
 	}
-        this.edad = edad;
+        this.edad = edad1;
     }
     
     

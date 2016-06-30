@@ -15,8 +15,7 @@ package Excepciones;
             con la palabra reservada 'import'.
         */
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 public class Exception2 
 {
     public static void main(String[] args) 
